@@ -1,0 +1,370 @@
+:root {
+    --primary-color: #FFD700;
+    /* Gold */
+    --secondary-color: #FF4136;
+    /* Red */
+    --bg-color: #1a1a2e;
+    --text-color: #ffffff;
+    --panel-bg: #16213e;
+    --input-bg: #0f3460;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.game-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Wheel Section */
+.wheel-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 0.1s;
+}
+
+.pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    z-index: 10;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Controls Section */
+.controls-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background-color: var(--panel-bg);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+/* Input Tools */
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-header label {
+    margin-bottom: 0;
+}
+
+.input-tools {
+    display: flex;
+    gap: 10px;
+}
+
+.input-tools button {
+    background-color: var(--input-bg);
+    color: #ccc;
+    border: 1px solid #555;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.input-tools button:hover {
+    background-color: #2a4a7c;
+    color: white;
+    border-color: var(--primary-color);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    background-color: var(--input-bg);
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+button#spinBtn {
+    background: linear-gradient(45deg, #FF4136, #FF851B);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 15px rgba(255, 65, 54, 0.4);
+    text-transform: uppercase;
+}
+
+button#spinBtn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 65, 54, 0.6);
+}
+
+button#spinBtn:active {
+    transform: translateY(1px);
+}
+
+button#spinBtn:disabled {
+    background: #555;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+button#historyBtn {
+    background: transparent;
+    border: 2px solid #555;
+    color: #ccc;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+button#historyBtn:hover {
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background-color: white;
+    color: #333;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    max-width: 90%;
+    width: 400px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close-modal,
+.close-history {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.winner-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 20px 0;
+    word-wrap: break-word;
+}
+
+/* Modal Actions */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s;
+}
+
+.modal-actions button:hover {
+    opacity: 0.9;
+}
+
+#removeWinnerBtn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#closeBtn,
+#closeHistoryBtn,
+#clearHistoryBtn {
+    background-color: var(--input-bg);
+    color: white;
+}
+
+#clearHistoryBtn {
+    background-color: #555;
+}
+
+/* History Modal Specifics */
+.history-content {
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#historyList {
+    list-style: none;
+    text-align: left;
+    margin: 20px 0;
+    overflow-y: auto;
+    max-height: 300px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+#historyList li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#historyList li:last-child {
+    border-bottom: none;
+}
+
+.timestamp {
+    font-size: 0.8rem;
+    color: #888;
+    margin-left: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .game-area {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wheel-container {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 400px) {
+    .wheel-container {
+        width: 300px;
+        height: 300px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}

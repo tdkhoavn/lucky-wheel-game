@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vòng Quay May Mắn</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Canvas Confetti - Local -->
+    <script src="assets/js/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Vòng Quay May Mắn</h1>
+        </header>
+
+        <main class="game-area">
+            <div class="wheel-container">
+                <div class="pointer"></div>
+                <canvas id="wheelCanvas" width="500" height="500"></canvas>
+            </div>
+
+            <div class="controls-container">
+                <div class="input-group">
+                    <div class="input-header">
+                        <label for="namesInput">Nhập danh sách tên:</label>
+                        <div class="input-tools">
+                            <button id="shuffleBtn" title="Xáo trộn">🔀 Xáo trộn</button>
+                            <button id="sortBtn" title="Sắp xếp A-Z">AZ Sắp xếp</button>
+                        </div>
+                    </div>
+                    <textarea id="namesInput"
+                        placeholder="Nhập tên người tham gia...&#10;Nguyễn Văn A&#10;Trần Thị B&#10;Lê Văn C">Nguyễn Văn A
+Trần Thị B
+Lê Văn C
+Phạm Thị D
+Hoàng Văn E</textarea>
+                </div>
+
+                <div class="actions">
+                    <button id="spinBtn">QUAY NGAY!</button>
+                    <button id="historyBtn" class="secondary-btn">📜 Lịch sử</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="resultModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Người chiến thắng là:</h2>
+            <div id="winnerName" class="winner-text"></div>
+            <div class="modal-actions">
+                <button id="removeWinnerBtn" class="secondary-btn">Xóa người này</button>
+                <button id="closeBtn" class="primary-btn">Đóng & Quay tiếp</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="modal hidden">
+        <div class="modal-content history-content">
+            <span class="close-history">&times;</span>
+            <h2>Lịch sử quay thưởng</h2>
+            <ul id="historyList"></ul>
+            <div class="modal-actions">
+                <button id="clearHistoryBtn" class="secondary-btn">Xóa lịch sử</button>
+                <button id="closeHistoryBtn" class="primary-btn">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
