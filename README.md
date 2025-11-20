@@ -2,6 +2,20 @@
 
 Game vòng quay may mắn hoàn toàn offline với giao diện đẹp mắt và nhiều tính năng.
 
+## 📸 Screenshots
+
+### Giao diện chính
+![Giao diện chính](screenshots/main_interface.png)
+*Giao diện game với vòng quay và danh sách người tham gia*
+
+### Kết quả quay thưởng
+![Kết quả](screenshots/winner_modal.png)
+*Modal hiển thị người chiến thắng với hiệu ứng pháo giấy*
+
+### Lịch sử quay thưởng
+![Lịch sử](screenshots/history_modal.png)
+*Danh sách lịch sử các người đã thắng*
+
 ## 🎯 Tính năng
 
 - ✨ Vòng quay động với hiệu ứng vật lý mượt mà
@@ -12,6 +26,24 @@ Game vòng quay may mắn hoàn toàn offline với giao diện đẹp mắt và
 - 🗑️ Xóa người vừa thắng khỏi danh sách
 - 📱 Responsive - hoạt động tốt trên mobile
 - 🌐 **Hoàn toàn offline** - không cần kết nối internet
+
+## 🎨 Giao diện (UI Design)
+
+Game được thiết kế với giao diện hiện đại, bắt mắt:
+
+- **Màu sắc**: Sử dụng bảng màu tối (dark theme) sang trọng với điểm nhấn vàng gold
+- **Font chữ**: Sử dụng system fonts (-apple-system, BlinkMacSystemFont, Segoe UI, Arial) để đảm bảo hiển thị tốt trên mọi thiết bị
+- **Vòng quay**: Canvas động với 8 màu sắc rực rỡ, tự động chia đều theo số lượng người tham gia
+- **Modal**: Hiệu ứng pop-up mượt mà với animation khi hiển thị kết quả
+- **Responsive**: Layout tự động điều chỉnh từ desktop (1920px) xuống mobile (375px)
+- **Micro-interactions**: Hiệu ứng hover, shadow, và transitions cho trải nghiệm mượt mà
+
+### Màu sắc chủ đạo:
+- Primary (Gold): `#FFD700`
+- Secondary (Red): `#FF4136`
+- Background: `#1a1a2e`
+- Panel: `#16213e`
+- Input: `#0f3460`
 
 ## 🚀 Cách chạy
 
@@ -73,6 +105,14 @@ lucky-wheel-game/
 - Game hoạt động hoàn toàn offline
 - Hỗ trợ đầy đủ tiếng Việt (bao gồm dấu)
 - Responsive design - chạy tốt trên mọi thiết bị
+
+## 🤖 Công cụ phát triển
+
+Dự án này được xây dựng với sự hỗ trợ của **Google Antigravity** - AI coding assistant mạnh mẽ từ Google DeepMind.
+
+- **AI Agent**: Google Antigravity
+- **IDE**: Visual Studio Code
+- **Workflow**: Agentic AI-assisted development
 
 ## 📄 License
 
